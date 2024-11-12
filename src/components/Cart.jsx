@@ -4,9 +4,10 @@ import './ShoppingCart.css';
 import  {useSelector, useDispatch} from 'react-redux';
 import {incQuantity, decQuantity,removeItem}  from '../redux/features/CartSlice'
 import { Button } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 import emt from '../assets/cart.gif'
-import { NavLink } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 function Cart(){
 //   const items = [
 //     { id: 1, name: 'Product 1', price: 25, quantity: 1, image: 'https://via.placeholder.com/100' },
@@ -15,6 +16,11 @@ function Cart(){
 
 const{cart, totalQuantity, totalPrice}= useSelector((state)=>state.allCarts);
 const dispatch= useDispatch();
+ 
+const navigate= useNavigate();
+const handleCheckout=()=>{
+ navigate("/checkout")
+}
 
   return (
     <>
@@ -26,7 +32,7 @@ const dispatch= useDispatch();
             <img src={data.thumbnail} alt={data.title} className="item-image" />
             <div className="item-info">
               <h3 className="item-name">{data.title}</h3>
-              <p className="item-price">{data.price}</p>
+              <p className="item-price">Rs.{data.price}</p>
               <p className="item-quantity">Quantity: <strong>{data.quantity}</strong> </p>
             </div>
             <div className="item-actions">
@@ -45,8 +51,8 @@ const dispatch= useDispatch();
         ))}
       </div>
       <div className="cart-summary">
-        <h3>Total: ${cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</h3>
-        <button className="checkout-btn">Proceed to Checkout</button>
+        <h3>Total: ₹{cart.reduce((acc, item) => acc + item.price * item.quantity, 0).toFixed(2)}</h3>
+        <button className="checkout-btn" onClick={handleCheckout}>Proceed to Checkout</button>
       </div> 
     </div> :
     <div className='grid place-item-center' >

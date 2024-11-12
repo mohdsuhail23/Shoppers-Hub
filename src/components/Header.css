@@ -10,5 +10,8 @@ transition: all .2s ease-in-out;
 
 .red:hover{
   color: red;
-  text-shadow: 1px 1px  10px red;
+  /* text-shadow: 1px 1px  10px red; */
+}
+.nav-sh{
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }

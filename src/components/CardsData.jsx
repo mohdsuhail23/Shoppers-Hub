@@ -6,12 +6,13 @@ import { products } from './ProductData';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../redux/features/CartSlice'
 import { Snackbar, Alert } from '@mui/material';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import Placeholder from 'react-bootstrap/Placeholder';
 
 
 
 
 export default function CardsData() {
-    // const [cardData, setCardData] = useState([]); // Initialize with an empty array
     const [open, setOpen] = useState(false);
 
     // Function to handle the button click
@@ -24,22 +25,6 @@ export default function CardsData() {
       }, 2000);
     };
     
-
-    // const fetchData = async () => {
-    //     try {
-    //         const url = await fetch('https://dummyjson.com/products');
-    //         const data = await url.json();
-    //         setCardData(data.products);
-    //         // console.log(data.products) // Set cardData to data.products array
-    //     } catch (error) {
-    //         console.error("Error fetching data:", error);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     fetchData();
-    // }, []); // Fetch data only once when component mounts
-    // const [cardData, setCardData] = useState(products)
     const dispatch = useDispatch();
 
     const items= useSelector((state)=>state.allCarts.items);
@@ -47,15 +32,37 @@ export default function CardsData() {
     const truncateDescription = (description) => {
         return description.length > 80 ? description.substring(0, 90) + '...' : description;
     };
+
+
+    const [isImageLoading, setIsImageLoading] = useState(true);
+
+    const handleLoadStart = () => {
+      setIsImageLoading(true);
+    };
+  
+    const handleLoad = () => {
+      setIsImageLoading(false);
+    };
   return (
     <>
     { items.map((element , id)=>{
         return(
-            <Card style={{ width: "22rem" }} key={id} className='mx-2 my-2 border-0 '>
-            <Card.Img variant="top" src={element.thumbnail}  className='mt-2 shadow hover rounded 'loading='lazy' style={{cursor: "pointer",}}/>
+            <Card style={{ width: "22rem"} } key={id} className='mx-2 my-2 border-0 '>
+            {/* <LazyLoadImage variant="top" src={element.thumbnail}  className='mt-2 shadow hover rounded ' alt='Loading..' onLoadStart={{background: "gray"}} style={{cursor: "pointer"}} 
+            /> */}
+            {isImageLoading && <Placeholder as={LazyLoadImage} animation="glow" style={{ height: "328px", width: "100%"}} />}
+      
+      <LazyLoadImage
+        variant="top"
+        src={element.thumbnail}
+        className="mt-2 shadow hover rounded"
+        alt={`Thumbnail of ${element.title}`}
+        style={{ cursor: "pointer" }}
+        onLoadStart={handleLoadStart}
+        onLoad={handleLoad}  // Set isImageLoading to false once loading is complete
+      />
             <Card.Body>
               <Card.Title>{element.title}</Card.Title>
-             
               <Card.Text >
                {truncateDescription(element.description)}
               </Card.Text>
