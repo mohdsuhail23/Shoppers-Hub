@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
-import { products } from './ProductData';
 import { useSelector, useDispatch } from 'react-redux';
 import { addToCart } from '../redux/features/CartSlice'
 import { Snackbar, Alert } from '@mui/material';
