@@ -56,15 +56,12 @@ const handleCheckout=()=>{
       </div> 
     </div> :
     <div className='grid place-item-center' >
-    <div className=" d-flex justify-content-center align-items-center ">
-        <div  className='d-flex align-items-center justify-content-center  p-3  border border-secondar' style={{width:"40rem"}}>
+    <div className=" d-flex justify-content-center align-items-center  flex-column" style={{height:"80vh"}}>
+        <div  className='d-flex align-items-center justify-content-center  p-3  b' style={{width:"40rem"}}>
             <h1>Your Cart Is Empty</h1>
             <img src={emt} alt="cart" style={{width:"150px" , height:"150px"}} / >
         </div>
-       
-    </div>
-    
-    <NavLink to='/'  className="d-flex justify-content-center align-items-center" style={{textDecoration:"none"}}>
+        <NavLink to='/'  className="d-flex justify-content-center align-items-center" style={{textDecoration:"none"}}>
         
         {/* <Button variant="outlined">Go To Home</Button> */}
         <Button
@@ -83,6 +80,9 @@ const handleCheckout=()=>{
         
         
         </NavLink>
+    </div>
+    
+    
     </div>
     
     }

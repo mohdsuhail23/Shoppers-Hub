@@ -15,3 +15,13 @@ transition: all .2s ease-in-out;
 .nav-sh{
   box-shadow: 0 2px 4px 0 rgba(0,0,0,.1);
 }
+
+.bg{
+ background: rgb(248 228 253);
+}
+
+@media only screen and (max-width: 640px) {
+   .bg{
+    background: red
+   }
+}

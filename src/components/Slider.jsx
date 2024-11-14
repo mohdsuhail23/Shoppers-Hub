@@ -20,6 +20,9 @@ function Slider() {
       <Carousel.Item style={{width:"100%", height:"90vh"}} >
       <img src={img3} alt="" style={{width:"100%", height:"100%"}} />
       </Carousel.Item>
+      <Carousel.Item style={{width:"100%", height:"90vh"}} >
+      <img src={img4} alt="" style={{width:"100%", height:"100%"}} />
+      </Carousel.Item>
     </Carousel>
     </>
   )

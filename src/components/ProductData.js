@@ -17,6 +17,8 @@
 // // Export the products array and fetch function
 // export { products, fetchProducts };
 
+import image1 from '../assets/1.jpg'
+
 
  export  const products = [
       {
@@ -1428,6 +1430,7 @@
           "https://cdn.dummyjson.com/products/images/groceries/Eggs/1.png"
         ],
         "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Eggs/thumbnail.png"
+        // "thumbnail": `${image1}` 
       },
       {
         "id": 24,
