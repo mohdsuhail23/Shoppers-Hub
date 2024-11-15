@@ -20,8 +20,22 @@ transition: all .2s ease-in-out;
  background: rgb(248 228 253);
 }
 
+
+.hamburger{
+  width: 30px;
+  height: 30px;
+  font-weight: bolder;
+  margin: auto 1rem;
+  margin-right: .6rem;
+}
+.logo{
+  width: 14rem;
+  margin: auto;
+  height: 100%;
+}
+
 @media only screen and (max-width: 640px) {
-   .bg{
+   /* .bg{
     background: red
-   }
+   } */
 }

@@ -10,10 +10,8 @@ import { useSelector } from 'react-redux';
 import { UserContext } from "./Context/UserContext";
 import Backdrop from '@mui/material/Backdrop';
 import CircularProgress from '@mui/material/CircularProgress';
+import Logo from '../assets/logo5.png'
 import Offcanvas from 'react-bootstrap/Offcanvas';
-import { Button } from 'react-bootstrap';
-import Logo from '../assets/logo2.png'
-
 
 function Header() {
 
@@ -57,7 +55,7 @@ function Header() {
   const handleCloses = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  // const [card , setCard]= useState(true);
+
   return (
     <>
     { Loading && <Backdrop
@@ -71,13 +69,16 @@ function Header() {
 
       <Navbar  data-bs-theme="light" className='sticky-top bg ' style={{height:"5rem"}}>
         <Container>
-          <Navbar.Brand href="/"> <img src={Logo} alt="" style={{height:"11rem" , marginTop:".3rem"}} /></Navbar.Brand>
+          <Navbar.Brand href="/"> <img src={Logo} alt="" className='logo' /></Navbar.Brand>
           <Nav className="me-auto">
-            <NavLink className={(e) => { return e.isActive ? "text-decoration-underline" : "" }} to="/" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" }}>Home</NavLink>
-            <NavLink className={(e) => { return e.isActive ? "text-decoration-underline" : "" }}  to="/about" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" , margin:"0 2rem" }}>About</NavLink>
-            <NavLink className={(e) => { return e.isActive ? "text-decoration-underline" : "" }}  to="/about" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" , margin:"0 2rem" }}>Contact</NavLink>
-            <NavLink className={(e) => { return e.isActive ? "text-decoration-underline" : "" }}  to="/about" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" , margin:"0 2rem" }}>All Products</NavLink>
-            <NavLink className={(e) => { return e.isActive ? "text-decoration-underline" : "" }}  to="/about" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" , margin:"0 2rem" }}>Shop</NavLink>
+            <NavLink className={(e) => {
+  return `${e.isActive ? "text-decoration-underline" : ""} d-none d-md-block mx-5 fs-4`;}} to="/" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" }}>Home</NavLink>
+            <NavLink className={(e) => {
+  return `${e.isActive ? "text-decoration-underline" : ""} d-none d-md-block fs-4`;}} to="/about" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple" }}>About</NavLink>
+           
+           
+            
+            
           </Nav>
           <Badge badgeContent={totalQuantity} color="primary"
            >
@@ -87,11 +88,36 @@ function Header() {
             </NavLink>
           </Badge>
           <Nav  id="basic-button"
+          className='d-none d-md-block'
             aria-controls={open ? 'basic-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
             onClick={handleClick} style={{cursor:"pointer"}}><strong  className='fs-5 mx-2'> Hi! {username[0].toUpperCase()+ username.slice(1)}</strong>
           </Nav>
+
+         
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" strokeWidth="2" stroke='currentColor' className="size-2 d-sm-none hamburger" onClick={handleShow}>
+  <path fillRule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clipRule="evenodd" />
+</svg>
+<Offcanvas show={show} onHide={handleCloses}  style={{width:"80vw"}}>
+        <Offcanvas.Header closeButton style={{borderBottom:"2px solid #c1c1c1"}}>
+        <div  ><strong  className='fs-5 mx-2'> Hi! {username[0].toUpperCase()+ username.slice(1)}</strong>
+          </div>
+        </Offcanvas.Header>
+        <Offcanvas.Body>
+        <Nav className="me-auto">
+            <NavLink className={(e) => {
+  return `${e.isActive ? "text-decoration-underline" : ""} fs-4 my-3`;}} to="/" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple",borderBottom:"2px solid #c1c1c1" }}   onClick={handleCloses}>Home</NavLink> 
+            <NavLink className={(e) => {
+  return `${e.isActive ? "text-decoration-underline" : ""}  fs-4`;}} to="/about" style={{textDecoration:"none", fontSize:"18px" , fontFamily:"poppins", fontWeight:"bold", color:"purple",borderBottom:"2px solid #c1c1c1" }}onClick={handleCloses}>About</NavLink>
+           
+           
+            
+            
+          </Nav>
+        </Offcanvas.Body>
+      </Offcanvas>
+       
 
         </Container>
 
