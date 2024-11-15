@@ -102,6 +102,7 @@ function Header() {
 <Offcanvas show={show} onHide={handleCloses}  style={{width:"80vw"}}>
         <Offcanvas.Header closeButton style={{borderBottom:"2px solid #c1c1c1"}}>
         <div  ><strong  className='fs-5 mx-2'> Hi! {username[0].toUpperCase()+ username.slice(1)}</strong>
+        <span className='mx-1 my-auto red' style={{cursor:"pointer"}} onClick={handleLogout}>Logout</span>
           </div>
         </Offcanvas.Header>
         <Offcanvas.Body>
